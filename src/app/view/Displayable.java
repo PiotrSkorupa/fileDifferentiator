@@ -1,6 +1,8 @@
 package app.view;
 
+import java.io.IOException;
+
 public interface Displayable {
 
-    void display();
+    void display() throws IOException;
 }

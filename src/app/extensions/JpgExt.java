@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
 
-public class GifExt implements CheckExt {
+public class JpgExt implements CheckExt {
 
-    private static final byte[] HEX = new byte[] {(byte) 0x47, (byte) 0x49, (byte) 0x46};
+    private static final byte[] HEX = new byte[] {(byte) 0xFF, (byte) 0xD8, (byte) 0xFF, (byte) 0xE0};
 
     public boolean isTrue(InputStream inputStream) throws IOException {
         byte[] bytes = new byte[HEX.length];

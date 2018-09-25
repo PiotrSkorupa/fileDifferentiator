@@ -1,13 +1,19 @@
 package app.view;
 
+import app.validate.Validator;
+
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.InvalidPathException;
 import java.util.Scanner;
 
 public class MenuView implements Displayable {
 
-    public void display() {
+    public void display() throws IOException {
 
         File file;
+        Validator validator = new Validator();
         Scanner scanner = new Scanner(System.in);
         State state = State.INIT;
 
@@ -43,13 +49,19 @@ public class MenuView implements Displayable {
                     case VERIFY: {
                         System.out.println(">");
                         file = new File(scanner.nextLine());
-                        state = State.INIT;
+                        try {
+                            validator.validate(file);
+                        } catch (FileNotFoundException e) {
+                            System.out.println("The file " + file.getPath() + " was not found.");
+                        } catch (InvalidPathException e) {
+                            System.out.println("wrong path");
+                        }
                     }
+                    state = State.INIT;
                 }
             }
         }
     }
-
 
     public enum State {
         INIT,
