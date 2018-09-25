@@ -15,17 +15,23 @@ public class Validator {
         String type = Files.probeContentType(file.toPath());
         InputStream in = new FileInputStream(file);
 
-
-        if (check != null) {
-            if (checkExt.isTrue(in) && !check.equals("txt")) {
-                System.out.println("true");
-            } else if (checkExt.isTrue(in) && check.equals("txt") && type.startsWith("text")) {
-                System.out.println("true");
-            } else if (!checkExt.isTrue(in) && !check.equals("txt") && !check.equals("jpg") && !check.equals("png") && !check.equals("gif")) {
-                System.out.println("unknown extension");
-            } else {
-                System.out.println("false");
+        try {
+            if (check != null) {
+                if (checkExt.isTrue(in) && !check.equals("txt")) {
+                    System.out.println("true");
+                } else if (checkExt.isTrue(in) && check.equals("txt") && type.startsWith("text")) {
+                    System.out.println("true");
+                } else if (!checkExt.isTrue(in) && !check.equals("txt") && !check.equals("jpg") && !check.equals("png") && !check.equals("gif")) {
+                    System.out.println("unknown extension");
+                } else {
+                    System.out.println("false");
+                }
             }
+            in.close();
+        } catch (NullPointerException e) {
+            System.out.print("No file in this path");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
