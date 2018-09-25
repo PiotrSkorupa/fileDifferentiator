@@ -2,9 +2,10 @@ package app.extensions;
 
 import java.io.InputStream;
 
-public class TxtExt implements CheckExt {
+public class UnknownExt implements CheckExt {
 
     public boolean isTrue(InputStream inputStream) {
-        return true;
+        return false;
     }
+
 }

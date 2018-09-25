@@ -5,6 +5,6 @@ import java.io.InputStream;
 
 public interface CheckExt {
 
-    boolean isTrue(InputStream data) throws IOException;
+    boolean isTrue(InputStream inputStream) throws IOException;
 
 }
