@@ -1,4 +1,4 @@
-package app.vaidate;
+package app.validate;
 
 public class Validator {
 }
